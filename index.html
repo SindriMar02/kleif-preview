@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kleif Farm · The mountain pass, Kjós, Iceland</title>
+<meta name="description" content="A rebuilt Icelandic farmhouse on a private estate in Kjós, 35 minutes from Reykjavík. Five en-suite bedrooms, a hot tub over the valley, resident horses, and the mountains at the fence line.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF" id="themeColor">
+<meta name="color-scheme" content="light">
+<!-- relative hrefs + a raster twin: a project site lives under /repo-name/, and
+     Safari ignores SVG favicons, so either mistake shows the origin root's icon -->
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="180x180" href="assets/img/favicon-180.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preload" href="assets/fonts/Khand-Medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Zodiak-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Supreme-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/img/plate-hero.webp" fetchpriority="high"
+  imagesrcset="assets/img/plate-hero-sm.webp 1100w, assets/img/plate-hero.webp 2200w" imagesizes="100vw">
+<link rel="stylesheet" href="styles.css">
+
+<!-- Every fact below is taken from the business's own published pages: the
+     Welcome Beyond property page (kleif-farm) and their three Airbnb listings.
+     Coordinates are from their own listing JSON-LD. Nothing here is inferred. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "Kleif Farm",
+  "description": "A rebuilt Icelandic farmhouse on a private farm estate in Kjós, southwest Iceland, 35 minutes from Reykjavík. Five en-suite bedrooms, hot tub, resident horses and sheep.",
+  "url": "https://kleif.is/",
+  "telephone": "+354 847 7779",
+  "email": "info@kleif.is",
+  "identifier": "LG-REK-014208",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kjósarhreppur",
+    "addressCountry": "IS"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 64.29288, "longitude": -21.66721 },
+  "sameAs": [
+    "https://www.facebook.com/kleiffarm/",
+    "https://www.airbnb.com/rooms/48321874",
+    "https://www.welcomebeyond.com/property/kleif-farm/"
+  ]
+}
+</script>
+</head>
+<body data-nav-theme="light">
+
+<a class="skip-link" href="#top">Skip to content</a>
+
+<!-- fixed grid overlay (reference device: difference-blend hairlines) -->
+<div class="grid-overlay" aria-hidden="true">
+  <div class="go-line go-l1"></div><div class="go-line go-l2"></div>
+  <div class="go-line go-l3"></div><div class="go-line go-l4"></div><div class="go-line go-l5"></div>
+</div>
+
+<!-- intro wipe (single-page reuse of the reference's page-enter) -->
+<div class="intro-wipe" id="introWipe" aria-hidden="true"></div>
+
+<nav id="nav" aria-label="Main">
+  <div class="nav-contain">
+    <ul class="nav-ul nav-left">
+      <li><a class="btn nav-btn" href="#stay">The houses</a></li>
+      <li><a class="btn nav-btn" href="#days">Days</a></li>
+      <li><a class="btn nav-btn" href="#journey">Getting here</a></li>
+    </ul>
+    <a class="nav-logo" href="#top" aria-label="Kleif Farm, back to top">
+      <span class="nav-logo_mark">KLEIF</span>
+      <span class="nav-logo_sub">The mountain pass · Kjós</span>
+    </a>
+    <ul class="nav-ul nav-right">
+      <li><a class="btn nav-btn" href="#rebuild">The rebuild</a></li>
+      <li><a class="btn nav-btn is-cta" href="#book">Plan your stay</a></li>
+    </ul>
+    <button class="nav-burger" id="menuBtn" aria-controls="menuPanel" aria-expanded="false" aria-label="Menu">
+      <span class="nav-burger_l l1" aria-hidden="true"></span>
+      <span class="nav-burger_l l2" aria-hidden="true"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- mobile menu panel (under the constant bar) -->
+<div class="menu-panel" id="menuPanel" aria-hidden="true">
+  <nav class="menu-panel_nav" aria-label="Menu">
+    <a class="menu-panel_link" href="#stay">The houses</a>
+    <a class="menu-panel_link" href="#days">Days at Kleif</a>
+    <a class="menu-panel_link" href="#journey">Getting here</a>
+    <a class="menu-panel_link" href="#rebuild">The rebuild</a>
+    <a class="menu-panel_link is-cta" href="#book">Plan your stay</a>
+    <button class="menu-panel_link menu-panel_flyout" id="menuFlyoutBtn">How a stay works</button>
+  </nav>
+  <div class="menu-panel_foot">
+    <a href="tel:+3548477779">+354 847 7779</a>
+    <a href="mailto:info@kleif.is">info@kleif.is</a>
+  </div>
+</div>
+
+
+<main class="page-content" id="top">
+
+  <!-- ============ 0 · HERO ============ -->
+  <div class="hero" id="hero" data-nav-section data-nav-theme-val="light">
+    <div class="hero_wrapper" id="heroWrapper">
+      <div class="hero_bg">
+        <img src="assets/img/plate-hero.webp"
+          srcset="assets/img/plate-hero-sm.webp 1100w, assets/img/plate-hero.webp 2200w"
+          sizes="100vw" alt="The black farm buildings at Kleif under the mountain pass, along the turf-topped garden wall" fetchpriority="high">
+        <div class="hero_bg-fade" id="heroBgFade"></div>
+      </div>
+      <div class="hero_overlay"></div>
+      <div class="hero_content" id="heroContent" data-reveal>
+        <div class="hero_contain top container-large" data-hero-drift>
+          <p class="t-title-italic hero_kicker">The mountain pass,<br>35 minutes from Reykjavík</p>
+        </div>
+        <div class="hero_title-contain" id="heroTitleWrap" data-hero-drift>
+          <h1 class="hero_title" id="heroTitle">Kleif</h1>
+        </div>
+      </div>
+      <!-- fog: alpha-channel cloud plates, two speeds for depth -->
+      <div class="clouds-overlay_wrap clouds--far" data-scroll-speed="-10%" aria-hidden="true">
+        <img src="assets/img/fog-far.webp" alt="" loading="eager" decoding="async">
+      </div>
+      <div class="clouds-overlay_wrap clouds--mid" data-scroll-speed="-42%" aria-hidden="true">
+        <img src="assets/img/fog-veil.webp" alt="" loading="eager" decoding="async">
+      </div>
+      <div class="clouds-overlay_wrap clouds--near" data-scroll-speed="-80%" aria-hidden="true">
+        <img src="assets/img/fog-near.webp" alt="" loading="eager" decoding="async">
+      </div>
+    </div>
+    <!-- mist-transition: sticky plane scrubbed rotateX 90 -> 0 from its bottom edge -->
+    <div class="mist-transition" id="mistTransition" aria-hidden="true">
+      <div class="mist-transition_image-container" id="mistPlane">
+        <img class="mist-transition_image" src="assets/img/fog-veil.webp" alt="" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 1 · MANIFESTO ============ -->
+  <section class="manifesto" data-nav-section data-nav-theme-val="dark">
+    <div class="container-large">
+      <div class="manifesto_layout">
+        <div class="manifesto_col">
+          <div class="manifesto_kicker u-relative">
+            <p class="t-title-italic">Born and raised here</p>
+            <svg class="scribble-el" id="scribble" width="191" height="62" viewBox="0 0 191 62" fill="none" aria-hidden="true">
+              <path d="M118.7 58.8C118.3 58.7 117.9 58.6 100.4 49.1 82.9 39.5 48.3 20.5 30.5 10.1 12.6 -0.4 12.5 -1.7 36.1 2.4 59.6 6.6 106.8 16.3 133.8 23 160.7 29.7 166 33.1 169.1 35.3 172.3 37.6 173.1 38.5 173.1 39.5 173.4 45.3 163.9 46.3 149.3 49.1 138.1 51.2 119 52.2 97.3 48.4 75.6 44.6 51.8 35.4 39.7 29.4 27.6 23.5 27.9 21.2 28.4 19.3 29 17.4 29.9 16.1 31.4 14.8 33 13.5 35.3 12.3 43.5 11.3 51.7 10.3 65.8 9.6 82.7 10.7 99.5 11.9 118.7 14.9 135.9 19.1 153.1 23.3 167.8 28.5 176.5 32 185.2 35.4 187.7 36.9 189.1 38.4 190.5 40 190.9 41.4 188.8 43.5 186.7 45.7 182.1 48.4 173.6 51.3 165 54.3 152.6 57.3 123.2 59.1 93.7 60.8 47.7 61 0.3 61.3" stroke="#BABABA" stroke-width="0.7" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="text-scroll-fade" id="maskDevelop">
+            <h2 class="manifesto_text">The farm belongs to my parents. I was born and raised here, and when the old farmhouse fell quiet we rebuilt it with architects, in wood and terracotta, so guests could live our side of Iceland with the horses and sheep right outside the door.</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2 · OUR SEASONS ============ -->
+  <section class="season has-inset" id="seasons" data-nav-section data-nav-theme-val="light">
+    <div class="season_inner">
+      <img class="img-fill" src="assets/img/plate-dusk.webp"
+        srcset="assets/img/plate-dusk-sm.webp 1100w, assets/img/plate-dusk.webp 2200w"
+        sizes="100vw" alt="The hot tub on the terrace at dusk, with a fire burning and the valley in shadow" loading="lazy">
+      <div class="season_scrim"></div>
+      <div class="season_content container-large">
+        <div class="season_head">
+          <h3 class="h3-serif">Our seasons</h3>
+          <p class="season_body">Most guests come between May and October, when the daylight barely ends. The family’s own favourite is late August, when the farmhouse turns cosy. Winter is a wonderland of its own.</p>
+        </div>
+        <ul class="season_data">
+          <li><span class="data-num">May to Oct</span><span class="data-label">Midnight sun, daylight around the clock in midsummer</span></li>
+          <li><span class="data-num">Late August</span><span class="data-label">The cosy season, the family’s favourite</span></li>
+          <li><span class="data-num">Winter</span><span class="data-label">A wonderland; a 4WD is strongly recommended</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3 · DAYS TITLE ============ -->
+  <section class="title-band" id="days" data-nav-section data-nav-theme-val="dark">
+    <h3 class="section-title">Days at Kleif</h3>
+    <p class="title-band_sub">Everything below is on the estate, or arranged by the family, whose summerhouse is two minutes from the main house.</p>
+  </section>
+
+  <!-- ============ 4 · CARD-FLICK DAYS ============ -->
+  <section class="flick" data-nav-section data-nav-theme-val="dark">
+    <div class="container-large">
+      <div class="card-flick" id="cardFlick">
+
+        <a class="card-flick_item is-active" href="#book" data-cursor-text="Ask about it">
+          <div class="card-flick_inner">
+            <img class="card-flick_image" src="assets/img/flick-horses.webp" alt="An Icelandic horse grazing in front of the black farm buildings" loading="lazy">
+            <div class="card-flick_shade" aria-hidden="true"></div>
+            <div class="card-flick_content">
+              <h3 class="card-flick_title">The resident horses</h3>
+              <div class="card-flick_meta"><span>At the fence line</span><span class="meta-div"></span><span>All year</span></div>
+              <p class="card-flick_excerpt">Horses and sheep roam the property, and the family will introduce you.</p>
+            </div>
+            <p class="card-flick_side">Horses</p>
+          </div>
+        </a>
+
+        <a class="card-flick_item" href="#book" data-cursor-text="Ask about it">
+          <div class="card-flick_inner">
+            <img class="card-flick_image" src="assets/img/flick-pond.webp" alt="A guest on a paddle board on the garden pond among the trees" loading="lazy">
+            <div class="card-flick_shade" aria-hidden="true"></div>
+            <div class="card-flick_content">
+              <h3 class="card-flick_title">The pond</h3>
+              <div class="card-flick_meta"><span>In the garden</span><span class="meta-div"></span><span>Summer</span></div>
+              <p class="card-flick_excerpt">A small pond in a beautiful garden, with paddle boards and a rowing boat for the children.</p>
+            </div>
+            <p class="card-flick_side">The pond</p>
+          </div>
+        </a>
+
+        <a class="card-flick_item" href="#book" data-cursor-text="Ask about it">
+          <div class="card-flick_inner">
+            <img class="card-flick_image" src="assets/img/flick-tub.webp" alt="The hot tub sunk into the terrace behind turf-topped walls, in daylight" loading="lazy">
+            <div class="card-flick_shade" aria-hidden="true"></div>
+            <div class="card-flick_content">
+              <h3 class="card-flick_title">The hot tub</h3>
+              <div class="card-flick_meta"><span>Lower terrace</span><span class="meta-div"></span><span>All year</span></div>
+              <p class="card-flick_excerpt">Sunk into the terrace below the house, looking straight down the valley.</p>
+            </div>
+            <p class="card-flick_side">Hot tub</p>
+          </div>
+        </a>
+
+        <a class="card-flick_item" href="#book" data-cursor-text="Ask about it">
+          <div class="card-flick_inner">
+            <img class="card-flick_image" src="assets/img/flick-dinner.webp" alt="The long dining table set under wicker lamps in the farmhouse" loading="lazy">
+            <div class="card-flick_shade" aria-hidden="true"></div>
+            <div class="card-flick_content">
+              <h3 class="card-flick_title">Dinner by the owner</h3>
+              <div class="card-flick_meta"><span>On request</span></div>
+              <p class="card-flick_excerpt">A private chef can work in the second kitchen, or the family cooks dinner themselves.</p>
+            </div>
+            <p class="card-flick_side">Dinner</p>
+          </div>
+        </a>
+
+        <a class="card-flick_item" href="#book" data-cursor-text="Ask about it">
+          <div class="card-flick_inner">
+            <img class="card-flick_image" src="assets/img/flick-hikes.webp" alt="The path along the turf-topped wall leading into the green valley" loading="lazy">
+            <div class="card-flick_shade" aria-hidden="true"></div>
+            <div class="card-flick_content">
+              <h3 class="card-flick_title">Hikes from the door</h3>
+              <div class="card-flick_meta"><span>From the gate</span><span class="meta-div"></span><span>Glymur 20 min</span></div>
+              <p class="card-flick_excerpt">Trails lead straight into the surrounding mountains, and Iceland’s highest waterfall is twenty minutes away.</p>
+            </div>
+            <p class="card-flick_side">Hikes</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5 · QUOTE ============ -->
+  <section class="quote-section" data-nav-section data-nav-theme-val="dark">
+    <div class="quote-sticky">
+      <figure class="quote-component container-large">
+        <blockquote class="t-quote">&ldquo;It&rsquo;s like being out in nature while having a luxurious base to relax.&rdquo;</blockquote>
+        <figcaption class="quote-author">The family at Kleif, in their Welcome Beyond interview</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ 6 · THE RAIL ============ -->
+  <div class="rail_outer" id="stay" data-nav-section data-nav-theme-val="light">
+    <section class="rail" id="rail" aria-label="The houses at Kleif Farm">
+      <div class="rail_wrapper">
+        <div class="rail_backdrops" aria-hidden="true">
+          <div class="rail_backdrop rail_backdrop--behind" id="railBehind">
+            <img class="img-fill" src="assets/img/plate-farm.webp"
+              srcset="assets/img/plate-farm-sm.webp 1100w, assets/img/plate-farm.webp 2200w" sizes="100vw" alt="" loading="lazy">
+          </div>
+          <div class="rail_backdrop rail_backdrop--clipped" id="railClipped">
+            <img class="img-fill" src="assets/img/plate-field.webp"
+              srcset="assets/img/plate-field-sm.webp 1100w, assets/img/plate-field.webp 2200w" sizes="100vw" alt="" loading="lazy">
+            <svg class="rail_curtain" id="railCurtain" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true">
+              <defs>
+                <clipPath id="curtainClip" clipPathUnits="objectBoundingBox">
+                  <rect x="0" y="0" width="0.3334" height="1"></rect>
+                  <rect x="0.3333" y="0" width="0.3334" height="1"></rect>
+                  <rect x="0.6666" y="0" width="0.3334" height="1"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <div class="rail_overlay" id="railOverlay" aria-hidden="true"></div>
+        </div>
+        <div class="rail_container" id="railContainer">
+
+          <div class="rail_panel rail_panel--title">
+            <div class="rail_title-wrap">
+              <h2 class="rail_title" id="railTitle">One farm, three houses</h2>
+            </div>
+          </div>
+
+          <div class="rail_panel">
+            <article class="camp-card" data-cursor-text="The farmhouse">
+              <div class="camp-card_inner">
+                <img class="camp-card_image" src="assets/img/camp-farmhouse.webp" alt="The farmhouse living room with its panoramic window over the valley" loading="lazy">
+                <div class="camp-card_shade" aria-hidden="true"></div>
+                <div class="camp-card_content">
+                  <h3 class="camp-card_title">The Farmhouse</h3>
+                  <p class="camp-card_excerpt">The rebuilt main house sleeps ten in five en-suite bedrooms, with a panoramic window the length of the living room and two kitchens. Let on an exclusive basis.</p>
+                  <p class="camp-card_coords">[ N64 17.573 W21 40.033 ]</p>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="rail_panel">
+            <article class="camp-card" data-cursor-text="The villas">
+              <div class="camp-card_inner">
+                <img class="camp-card_image" src="assets/img/camp-villas.webp" alt="The black new-build villas behind turf-topped walls under the fell" loading="lazy">
+                <div class="camp-card_shade" aria-hidden="true"></div>
+                <div class="camp-card_content">
+                  <h3 class="camp-card_title">The Villas</h3>
+                  <p class="camp-card_excerpt">New-build villas behind turf-topped walls at the edge of the field, with a hot tub sunk into the terrace.</p>
+                  <p class="camp-card_coords">[ N64 17.573 W21 40.033 ]</p>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="rail_panel">
+            <article class="camp-card" data-cursor-text="The barn">
+              <div class="camp-card_inner">
+                <img class="camp-card_image" src="assets/img/camp-barn.webp" alt="The pool table in the renovated game barn" loading="lazy">
+                <div class="camp-card_shade" aria-hidden="true"></div>
+                <div class="camp-card_content">
+                  <h3 class="camp-card_title">The Barn</h3>
+                  <p class="camp-card_excerpt">A renovated barn with cosy en-suite rooms and a game barn for the evenings.</p>
+                  <p class="camp-card_coords">[ N64 17.573 W21 40.033 ]</p>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="rail_panel rail_panel--full rail_panel--final">
+            <img class="img-fill" src="assets/img/plate-dusk.webp" alt="The hot tub and fire at dusk, the valley dark behind them" loading="lazy">
+            <div class="rail_final-scrim" aria-hidden="true"></div>
+            <figure class="rail_quote">
+              <blockquote class="t-quote is-white">Guests rate every house at Kleif 5.0, and Airbnb counts the farm among its top five percent.</blockquote>
+              <figcaption class="quote-author is-white">Guest Favourite · 90 reviews across three listings</figcaption>
+            </figure>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ 7 · THE JOURNEY ============ -->
+  <section class="journey" id="journey" data-nav-section data-nav-theme-val="light">
+    <div class="journey_head container-large">
+      <p class="layout-title_sm is-faded">64° 09' N 21° 57' W<br>Reykjavík</p>
+      <div class="journey_head-center">
+        <h3 class="h3-serif">Over the pass</h3>
+        <p class="t-body is-faded">From Reykjavík the road runs north and turns inland into Kjós. Kleif means the mountain pass, and the farm sits beneath it.</p>
+      </div>
+      <p class="layout-title_sm is-faded t-right">N64 17.573 W21 40.033<br>Kleif</p>
+    </div>
+    <h2 class="journey_code" aria-label="Reykjavík to Kleif">RVK<span class="journey_code-div"></span>KLF</h2>
+    <div class="journey_map-outer">
+      <div class="journey_thread" id="journeyThread">
+        <div class="thread-svg_wrap" id="flightWrap" aria-hidden="true">
+          <svg class="thread-svg" viewBox="0 0 600 1600" fill="none" preserveAspectRatio="none">
+            <path class="route-static" d="M300 0 C 300 180, 170 260, 165 430 C 160 610, 430 700, 435 890 C 440 1080, 175 1170, 172 1350 C 170 1470, 300 1520, 300 1600" stroke="rgba(22,24,26,.22)" stroke-width="1"/>
+          </svg>
+          <svg class="thread-svg" viewBox="0 0 600 1600" fill="none" preserveAspectRatio="none">
+            <path class="route-flown" id="routeFlown" d="M300 0 C 300 180, 170 260, 165 430 C 160 610, 430 700, 435 890 C 440 1080, 175 1170, 172 1350 C 170 1470, 300 1520, 300 1600" stroke="#A6462F" stroke-width="1.5"/>
+          </svg>
+          <div class="route-indicator" id="routeIndicator">
+            <span class="pulse-ring" style="--i:1"></span>
+            <span class="pulse-ring" style="--i:2"></span>
+            <span class="pulse-ring" style="--i:3"></span>
+          </div>
+        </div>
+
+        <div class="waypoint is-right">
+          <div class="waypoint_text">
+            <p class="layout-title_sm is-faded">64° 09' N 21° 57' W</p>
+            <h4 class="waypoint_name">Reykjavík</h4>
+            <p class="waypoint_caption t-title-italic">Leave the city northbound; the whole drive is thirty-five minutes.</p>
+          </div>
+        </div>
+
+        <div class="waypoint is-left">
+          <div class="waypoint_text">
+            <h4 class="waypoint_name">Mosfellsbær</h4>
+            <p class="waypoint_caption t-title-italic">The last supermarkets before the farm, twenty minutes out. Stock up here.</p>
+          </div>
+        </div>
+
+        <div class="waypoint is-right">
+          <figure class="waypoint_card">
+            <img src="assets/img/plate-field.webp" srcset="assets/img/plate-field-sm.webp 1100w, assets/img/plate-field.webp 2200w" sizes="(max-width:768px) 90vw, 30vw" alt="Sheep in the home field with the fells of Kjós behind" loading="lazy">
+          </figure>
+          <div class="waypoint_text">
+            <h4 class="waypoint_name">Into Kjós</h4>
+            <p class="waypoint_caption t-title-italic">The road narrows between the fells, and the sheep stop noticing cars.</p>
+          </div>
+        </div>
+
+        <div class="waypoint is-left is-last">
+          <figure class="waypoint_card is-wide">
+            <img src="assets/img/plate-farm.webp" srcset="assets/img/plate-farm-sm.webp 1100w, assets/img/plate-farm.webp 2200w" sizes="(max-width:768px) 90vw, 36vw" alt="The black farm buildings of Kleif under the mountain" loading="lazy">
+          </figure>
+          <div class="waypoint_text">
+            <p class="layout-title_sm is-fell">N64 17.573 W21 40.033</p>
+            <h4 class="waypoint_name">Kleif</h4>
+            <p class="waypoint_caption t-title-italic">Park at the gate. The family’s summerhouse is two minutes away if you need anything.</p>
+          </div>
+        </div>
+      </div>
+      <div class="journey_data container-large">
+        <ul>
+          <li><span class="data-num">35 min</span><span class="data-label">from Reykjavík city centre</span></li>
+          <li><span class="data-num">20 min</span><span class="data-label">to Glymur, Iceland’s highest waterfall</span></li>
+          <li><span class="data-num">90 km</span><span class="data-label">from Keflavík International Airport</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8 · THE REBUILD (dark vitrine) ============ -->
+  <section class="exhibit" id="rebuild" data-nav-section data-nav-theme-val="light">
+    <div class="container-large">
+      <div class="exhibit_layout">
+        <div class="exhibit_text">
+          <p class="layout-title_sm is-fell">The rebuild</p>
+          <h3 class="h3-serif is-white">Rebuilt, not replaced</h3>
+          <p class="exhibit_body">The old farmhouse was completely rebuilt with the help of architects, in natural materials, wood and terracotta the whole way through. Simple, warm and modern, the way an Icelandic farmhouse feels when it is honest about what it is.</p>
+          <dl class="exhibit_facts">
+            <div><dt>Bedrooms</dt><dd>Five, all en-suite</dd></div>
+            <div><dt>Main house</dt><dd>330 m²</dd></div>
+            <div><dt>The farmhouse</dt><dd>Let on an exclusive basis</dd></div>
+          </dl>
+        </div>
+        <figure class="exhibit_frame" id="exhibitFrame">
+          <img src="assets/img/vitrine-room.webp" alt="The rebuilt open-plan living room with terracotta floor and timber ceiling" loading="lazy">
+          <figcaption class="layout-title_sm">Wood and terracotta, the whole way through</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9 · THE TABLE + SERVICES ============ -->
+  <section class="food" id="comforts" data-nav-section data-nav-theme-val="dark">
+    <div class="container-large">
+      <header class="food_head">
+        <h3 class="section-title">The table is yours</h3>
+        <p class="food_intro">The house is set up for self-catering, with a second kitchen where a chef can work without disturbing anyone. Ask, and the family arranges the rest.</p>
+      </header>
+      <div class="food_strip" id="foodStrip">
+        <figure class="food_plate">
+          <img src="assets/img/trip-fire.webp" alt="The wood stove burning beside a leather chair in the farmhouse" loading="lazy">
+        </figure>
+        <figure class="food_plate">
+          <img src="assets/img/trip-living.webp" alt="The living room under wicker lamps, valley light through the windows" loading="lazy">
+        </figure>
+        <figure class="food_plate">
+          <img src="assets/img/trip-window.webp" alt="A window seat with sheepskins looking out at the mountains" loading="lazy">
+        </figure>
+      </div>
+      <ul class="food_menu">
+        <li><span class="menu-name">Private chef in the second kitchen</span><span class="menu-dots"></span><span class="menu-price">On request</span></li>
+        <li><span class="menu-name">Dinner or breakfast by the owner</span><span class="menu-dots"></span><span class="menu-price">On request</span></li>
+        <li><span class="menu-name">Daily maid service and linen change</span><span class="menu-dots"></span><span class="menu-price">On request</span></li>
+        <li><span class="menu-name">Guided hikes and mountain bikes</span><span class="menu-dots"></span><span class="menu-price">On request</span></li>
+        <li><span class="menu-name">Baby cot</span><span class="menu-dots"></span><span class="menu-price">Free</span></li>
+        <li><span class="menu-name">WiFi, bathrobes, linen and toiletries</span><span class="menu-dots"></span><span class="menu-price">Included</span></li>
+      </ul>
+      <p class="food_note t-title-italic">Rates are on a self-catering basis. The nearest supermarkets are twenty minutes away in Mosfellsbær.</p>
+    </div>
+  </section>
+
+  <!-- ============ 10 · ASK FOR YOUR DATES ============ -->
+  <section class="book" id="book" data-nav-section data-nav-theme-val="dark">
+    <div class="container-large">
+      <div class="book_layout">
+        <div class="book_text">
+          <h3 class="h3-serif">Ask for your dates</h3>
+          <p class="book_body">Pick a house and your dates, and the request goes straight to the family. No card and no charge; they confirm each stay personally.</p>
+          <ul class="book_points">
+            <li><span class="data-num">34 guests</span><span class="data-label">across the three houses, by their own listings</span></li>
+            <li><span class="data-num">No card</span><span class="data-label">a request, not a charge; the family confirms</span></li>
+            <li><span class="data-num">Smaller groups</span><span class="data-label">can ask about reduced rates, as can last-minute stays</span></li>
+          </ul>
+        </div>
+        <form class="book_form" id="bookForm" novalidate>
+          <fieldset class="book_houses">
+            <legend class="book_label">The house</legend>
+            <div class="book_pills">
+              <label class="book_pill"><input type="radio" name="house" value="The Farmhouse (sleeps 10)" checked><span>The Farmhouse · 10</span></label>
+              <label class="book_pill"><input type="radio" name="house" value="The Villas (sleep 16)"><span>The Villas · 16</span></label>
+              <label class="book_pill"><input type="radio" name="house" value="The Barn (sleeps 8)"><span>The Barn · 8</span></label>
+              <label class="book_pill"><input type="radio" name="house" value="The whole farm (sleeps 34)"><span>The whole farm · 34</span></label>
+            </div>
+          </fieldset>
+          <div class="book_grid">
+            <div class="book_field">
+              <label class="book_label" for="bkArrive">Arrival</label>
+              <input class="book_input" id="bkArrive" name="arrival" type="date" required>
+              <p class="book_err" id="errArrive" hidden>Pick an arrival date.</p>
+            </div>
+            <div class="book_field">
+              <label class="book_label" for="bkDepart">Departure</label>
+              <input class="book_input" id="bkDepart" name="departure" type="date" required>
+              <p class="book_err" id="errDepart" hidden>Departure must be after arrival.</p>
+            </div>
+            <div class="book_field">
+              <label class="book_label" for="bkGuests">Guests</label>
+              <input class="book_input" id="bkGuests" name="guests" type="number" min="1" max="34" inputmode="numeric" required>
+              <p class="book_err" id="errGuests" hidden>How many of you, 1 to 34?</p>
+            </div>
+            <div class="book_field">
+              <label class="book_label" for="bkName">Name</label>
+              <input class="book_input" id="bkName" name="name" type="text" autocomplete="name" required>
+              <p class="book_err" id="errName" hidden>Tell the family your name.</p>
+            </div>
+            <div class="book_field">
+              <label class="book_label" for="bkPhone">Phone</label>
+              <input class="book_input" id="bkPhone" name="phone" type="tel" autocomplete="tel" required>
+              <p class="book_err" id="errPhone" hidden>A phone number, so the family can reach you.</p>
+            </div>
+            <div class="book_field">
+              <label class="book_label" for="bkEmail">Email</label>
+              <input class="book_input" id="bkEmail" name="email" type="email" autocomplete="email" spellcheck="false" required>
+              <p class="book_err" id="errEmail" hidden>That email does not look complete.</p>
+            </div>
+            <div class="book_field is-wide">
+              <label class="book_label" for="bkMsg">Anything else <span class="book_optional">optional</span></label>
+              <textarea class="book_input book_area" id="bkMsg" name="message" rows="3" placeholder="Chef dinner, a baby cot, riding nearby…"></textarea>
+            </div>
+          </div>
+          <div class="book_actions">
+            <button class="btn book_submit" id="bkSubmit" type="submit">Send the request</button>
+            <p class="book_note t-detail">The request goes to the family's booking desk. Nothing is charged now; they confirm each stay personally.</p>
+          </div>
+          <p class="book_err book_err--form" id="errForm" aria-live="polite" hidden></p>
+        </form>
+        <div class="book_done" id="bookDone" role="status" aria-live="polite" tabindex="-1" hidden>
+          <p class="book_done-title h3-serif">Request sent</p>
+          <p class="book_done-body">Thank you. The request is with the family and they confirm each stay personally. Nothing is charged now.</p>
+          <p class="book_done-ref layout-title_sm">Reference <span id="bookRef"></span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11 · CONTACT / FOOTER ============ -->
+  <footer class="footer" id="contact" data-nav-section data-nav-theme-val="light">
+    <div class="container-large">
+      <div class="footer_head">
+        <h2 class="footer_title">The gate is open</h2>
+        <p class="footer_sub t-title-italic">Write or call, and the family helps you plan the whole stay.</p>
+      </div>
+      <div class="footer_grid">
+        <div class="footer_col">
+          <p class="layout-title_sm is-faded">Talk to us</p>
+          <a class="footer_big" href="tel:+3548477779">+354 847 7779</a>
+          <a class="footer_big" href="mailto:info@kleif.is">info@kleif.is</a>
+        </div>
+        <div class="footer_col">
+          <p class="layout-title_sm is-faded">Find us</p>
+          <p class="t-body">Kleif Farm<br>Kjósarhreppur, Iceland</p>
+          <p class="t-body is-faded">N64 17.573 W21 40.033</p>
+        </div>
+        <div class="footer_col">
+          <p class="layout-title_sm is-faded">The farm</p>
+          <p class="t-body">Farmhouse, villas and barn, each bookable on its own. The farmhouse comes exclusive, with all utilities, linen and WiFi included.<br>A car is essential; a 4WD in winter.</p>
+        </div>
+      </div>
+      <div class="footer_base">
+        <p class="t-detail">Skráning LG-REK-014208</p>
+        <div class="footer_links">
+          <a href="https://www.facebook.com/kleiffarm/" rel="noopener" target="_blank">Facebook</a>
+          <a href="https://www.airbnb.com/rooms/48321874" rel="noopener" target="_blank">Airbnb</a>
+          <a href="https://www.welcomebeyond.com/property/kleif-farm/" rel="noopener" target="_blank">Welcome Beyond</a>
+        </div>
+        <p class="t-detail">Design proposal, not the live site</p>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<!-- flyout: how a stay works -->
+<div class="flyout" id="flyout" aria-hidden="true">
+  <button class="flyout_overlay" id="flyoutOverlay" tabindex="-1" aria-label="Close panel"></button>
+  <aside class="flyout_sheet" role="dialog" aria-modal="true" aria-labelledby="flyoutTitle" data-lenis-prevent>
+    <button class="flyout_close" id="flyoutClose" aria-label="Close">Close</button>
+    <h3 class="flyout_title" id="flyoutTitle">How a stay works</h3>
+    <ol class="flyout_steps">
+      <li><h4>1. Ask for your dates</h4><p>Write to the family. Smaller groups and last-minute stays can ask about reduced rates.</p></li>
+      <li><h4>2. The farmhouse is yours</h4><p>One booking takes the whole house: five suites, both kitchens, the terrace and the tub. The villas and barn can join for bigger gatherings.</p></li>
+      <li><h4>3. Drive thirty-five minutes</h4><p>North from Reykjavík, inland into Kjós, and park at the gate.</p></li>
+      <li><h4>4. Settle in</h4><p>The hot tub, the horses, the pond, and a panoramic window on the valley.</p></li>
+      <li><h4>5. Day trips, if you want them</h4><p>Glymur is twenty minutes, Þingvellir forty, and the Golden Circle within easy reach.</p></li>
+    </ol>
+  </aside>
+</div>
+<button class="flyout_tab" id="flyoutTab" aria-controls="flyout" aria-expanded="false">How a stay works</button>
+
+<!-- custom cursor -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor_line-v" id="curV"></span>
+  <span class="cursor_line-h" id="curH"></span>
+  <span class="cursor_dot" id="curDot"></span>
+  <span class="cursor_label" id="curLabel"></span>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
