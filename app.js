@@ -572,4 +572,28 @@
   });
 
   window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+
+  /* TEMPORARY ?jank=1 probe: real WebKit gives no console, so the page measures
+     its own rAF deltas and paints the result on screen. Removed before hand-off. */
+  if (location.search.indexOf('jank=1') >= 0) {
+    var jd = document.createElement('div');
+    jd.style.cssText = 'position:fixed;left:0;right:0;top:0;z-index:9999;background:#000;color:#0f0;font:14px/1.4 monospace;padding:8px 10px;pointer-events:none';
+    jd.textContent = 'scroll to measure...';
+    document.body.appendChild(jd);
+    var ds = [], lastT = performance.now(), scrolling = 0;
+    window.addEventListener('scroll', function () { scrolling = performance.now(); }, { passive: true });
+    var loop = function (t) {
+      var d = t - lastT; lastT = t;
+      if (performance.now() - scrolling < 120) ds.push(d);
+      if (ds.length && ds.length % 30 === 0) {
+        var a = ds.slice().sort(function (x, y) { return x - y; });
+        var q = function (f) { return a[Math.floor(a.length * f)].toFixed(1); };
+        var over = (ds.filter(function (x) { return x > 33.4; }).length / ds.length * 100).toFixed(1);
+        jd.textContent = 'n=' + ds.length + ' p50=' + q(.5) + ' p95=' + q(.95) + ' worst=' + a[a.length - 1].toFixed(1) + ' >33ms=' + over + '%';
+      }
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  }
+
 })();
