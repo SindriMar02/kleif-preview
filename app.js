@@ -240,6 +240,11 @@
   }
 
   gsap.registerPlugin(ScrollTrigger);
+  /* iOS collapses its URL bar the moment a scroll starts, which fires resize.
+     A refresh mid-fling re-lays-out every trigger and writes scroll, and WebKit
+     answers a scroll write by KILLING the momentum dead - the "abrupt stop".
+     So height-only resizes on touch must never reach ScrollTrigger. */
+  ScrollTrigger.config({ ignoreMobileResize: true });
 
   /* ---------- Lenis: DESKTOP ONLY, on the GSAP ticker ----------
      On touch, native scrolling drives ScrollTrigger directly. */
@@ -251,6 +256,10 @@
   gsap.ticker.lagSmoothing(0);
 
   var vh = function () { return window.innerHeight; };
+  /* iOS delivers scroll events async with rendering, so a synchronous scrub
+     visibly steps. A small lerp on touch rides the ticker instead; desktop
+     keeps true - Lenis already smooths the event flow there. */
+  var SCRUB = isTouch ? 0.35 : true;
 
   /* ---------- intro wipe: time-based, never load-bearing ---------- */
   var wipe = document.getElementById('introWipe');
@@ -289,17 +298,21 @@
   var heroContent = document.getElementById('heroContent');
   gsap.to(heroWrapper, {
     y: function () { return vh(); }, ease: 'none',
-    scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true, invalidateOnRefresh: true, refreshPriority: 10 }
+    scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: SCRUB, invalidateOnRefresh: true, refreshPriority: 10 }
   });
-  gsap.fromTo(heroContent, { filter: 'blur(0px)' }, {
-    filter: 'blur(10px)', ease: 'none',
-    scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true, refreshPriority: 10 }
-  });
+  if (!isTouch) {
+    /* a scrubbed Gaussian blur re-renders the whole hero every frame; WebKit
+       pays that in paint. The scrim + bg fade carry the dissolve on touch. */
+    gsap.fromTo(heroContent, { filter: 'blur(0px)' }, {
+      filter: 'blur(10px)', ease: 'none',
+      scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: SCRUB, refreshPriority: 10 }
+    });
+  }
   /* Layers rest at translateY(100%) in CSS and animate the `y` property with a
      UNIT STRING, exactly as the reference does (ledger #97, third variant). */
   hero.querySelectorAll('[data-scroll-speed]').forEach(function (el) {
     var t = el.getAttribute('data-scroll-speed');
-    var st = { trigger: hero, start: 'top top', end: 'bottom top', scrub: true, invalidateOnRefresh: true, refreshPriority: 10 };
+    var st = { trigger: hero, start: 'top top', end: 'bottom top', scrub: SCRUB, invalidateOnRefresh: true, refreshPriority: 10 };
     if (t.charAt(0) === '-') gsap.to(el, { y: t, ease: 'none', scrollTrigger: st });
     else gsap.fromTo(el, { y: t }, { y: 0, ease: 'none', scrollTrigger: st });
   });
@@ -309,7 +322,7 @@
   if (heroBgFade) {
     gsap.fromTo(heroBgFade, { opacity: 0 }, {
       opacity: 1, ease: 'none',
-      scrollTrigger: { trigger: hero, start: 'top top-=8%', end: 'top top-=52%', scrub: true, refreshPriority: 10 }
+      scrollTrigger: { trigger: hero, start: 'top top-=8%', end: 'top top-=52%', scrub: SCRUB, refreshPriority: 10 }
     });
   }
 
@@ -320,14 +333,14 @@
     mistPlane.classList.add('visible');
     gsap.fromTo(mistPlane, { rotateX: 90 }, {
       rotateX: 0, ease: 'none',
-      scrollTrigger: { trigger: mistTransition, start: 'top top-=80%', end: 'bottom center', scrub: true, refreshPriority: 8 }
+      scrollTrigger: { trigger: mistTransition, start: 'top top-=80%', end: 'bottom center', scrub: SCRUB, refreshPriority: 8 }
     });
   }
   /* the reference's -60svh content lift */
   hero.querySelectorAll('[data-hero-drift]').forEach(function (el) {
     gsap.to(el, {
       y: function () { return -0.6 * vh(); }, ease: 'none',
-      scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true, invalidateOnRefresh: true, refreshPriority: 10 }
+      scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: SCRUB, invalidateOnRefresh: true, refreshPriority: 10 }
     });
   });
 
@@ -336,7 +349,7 @@
   gsap.set(maskEl, { '--mask-position': -40 });
   gsap.to(maskEl, {
     '--mask-position': 100, ease: 'none',
-    scrollTrigger: { trigger: maskEl, start: 'top 80%', end: 'bottom 60%', scrub: true, refreshPriority: 9 }
+    scrollTrigger: { trigger: maskEl, start: 'top 80%', end: 'bottom 60%', scrub: SCRUB, refreshPriority: 9 }
   });
   var scribblePath = document.querySelector('#scribble path');
   if (scribblePath) {
@@ -355,21 +368,21 @@
       gsap.fromTo(el,
         { clipPath: 'inset(0rem 1.25rem 0rem 1.25rem round 0.375rem)' },
         { clipPath: 'inset(0rem 0rem 0rem 0rem round 0rem)', ease: 'none',
-          scrollTrigger: { trigger: el, start: 'top 80%', end: 'top 50%', scrub: true } });
+          scrollTrigger: { trigger: el, start: 'top 80%', end: 'top 50%', scrub: SCRUB } });
     });
     var frame = document.getElementById('exhibitFrame');
     if (frame) {
       gsap.fromTo(frame,
         { clipPath: 'inset(0% 0% 18% 0% round 0.375rem)' },
         { clipPath: 'inset(0% 0% 0% 0% round 0.375rem)', ease: 'none',
-          scrollTrigger: { trigger: frame, start: 'top 85%', end: 'top 45%', scrub: true } });
+          scrollTrigger: { trigger: frame, start: 'top 85%', end: 'top 45%', scrub: SCRUB } });
     }
     var plates = document.querySelectorAll('#foodStrip .food_plate');
     plates.forEach(function (el, i) {
       gsap.fromTo(el,
         { clipPath: 'inset(0% 0% 22% 0% round 0.375rem)' },
         { clipPath: 'inset(0% 0% 0% 0% round 0.375rem)', ease: 'none',
-          scrollTrigger: { trigger: '#foodStrip', start: 'top 85%', end: 'top ' + (48 - i * 6) + '%', scrub: true } });
+          scrollTrigger: { trigger: '#foodStrip', start: 'top 85%', end: 'top ' + (48 - i * 6) + '%', scrub: SCRUB } });
     });
   });
 
@@ -426,7 +439,7 @@
     gsap.fromTo(railOuter,
       { clipPath: 'inset(0% 10% 0% 10%)' },
       { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', clearProps: 'clipPath',
-        scrollTrigger: { trigger: railOuter, start: 'top bottom', end: 'top top', scrub: true, refreshPriority: 6 } });
+        scrollTrigger: { trigger: railOuter, start: 'top bottom', end: 'top top', scrub: SCRUB, refreshPriority: 6 } });
   });
   var railType = function () {
     return window.matchMedia('(min-width: 769px)').matches
@@ -437,15 +450,25 @@
   function buildRailGrow() {
     if (railGrow) { railGrow.scrollTrigger && railGrow.scrollTrigger.kill(); railGrow.kill(); }
     var t = railType();
-    railGrow = gsap.fromTo(railTitle, { fontSize: t.enter }, {
-      fontSize: t.grown, ease: 'none',
-      scrollTrigger: { trigger: railOuter, start: 'top bottom', end: 'top top', scrub: true, refreshPriority: 6 }
-    });
+    if (isTouch) {
+      /* animating fontSize reflows the pinned section every frame; on touch the
+         same grow is a compositor-only transform scale at the settled size */
+      gsap.set(railTitle, { fontSize: t.grown, transformOrigin: '50% 50%' });
+      railGrow = gsap.fromTo(railTitle, { scale: parseFloat(t.enter) / parseFloat(t.grown) }, {
+        scale: 1, ease: 'none',
+        scrollTrigger: { trigger: railOuter, start: 'top bottom', end: 'top top', scrub: SCRUB, refreshPriority: 6 }
+      });
+    } else {
+      railGrow = gsap.fromTo(railTitle, { fontSize: t.enter }, {
+        fontSize: t.grown, ease: 'none',
+        scrollTrigger: { trigger: railOuter, start: 'top bottom', end: 'top top', scrub: SCRUB, refreshPriority: 6 }
+      });
+    }
   }
   buildRailGrow();
   gsap.fromTo(railBehind, { yPercent: 18 }, {
     yPercent: 0, ease: 'none',
-    scrollTrigger: { trigger: railOuter, start: 'top 60%', end: 'top top', scrub: true, refreshPriority: 6 }
+    scrollTrigger: { trigger: railOuter, start: 'top 60%', end: 'top top', scrub: SCRUB, refreshPriority: 6 }
   });
 
   /* behind the farm plate sits the hero arrival plate again */
@@ -469,7 +492,7 @@
         r.setAttribute('width', '0.3334');
         r.setAttribute('x', String(i * 0.3333));
       });
-      gsap.set(railTitle, { clearProps: 'fontSize' });
+      gsap.set(railTitle, { clearProps: isTouch ? 'scale,transform' : 'fontSize' });
     }
     var H = vh();
     var L = railTravel();
@@ -480,12 +503,17 @@
       scrollTrigger: {
         trigger: rail, start: 'top top',
         end: '+=' + (sText + sCurtain + sX),
-        pin: true, scrub: true, invalidateOnRefresh: true, refreshPriority: 5
+        pin: true, scrub: SCRUB, invalidateOnRefresh: true, refreshPriority: 5
       }
     });
     var rt = railType();
-    railTl.fromTo(railTitle, { fontSize: rt.grown },
-      { fontSize: rt.settled, ease: 'none', duration: 0.5 * sText }, 0);
+    if (isTouch) {
+      railTl.fromTo(railTitle, { scale: 1 },
+        { scale: parseFloat(rt.settled) / parseFloat(rt.grown), ease: 'none', duration: 0.5 * sText }, 0);
+    } else {
+      railTl.fromTo(railTitle, { fontSize: rt.grown },
+        { fontSize: rt.settled, ease: 'none', duration: 0.5 * sText }, 0);
+    }
     var tCurtain = 0.5 * sText;
     railTl.to(curtainRects[2], { attr: { width: 0 }, ease: 'none', duration: 0.5 * sCurtain }, tCurtain);
     railTl.to(curtainRects[1], { attr: { width: 0 }, ease: 'none', duration: 0.75 * sCurtain }, tCurtain);
@@ -511,7 +539,7 @@
     var vb = { w: 600, h: 1600 };
     gsap.to(prog, {
       p: 1, ease: 'none',
-      scrollTrigger: { trigger: flightWrap, start: 'top 65%', end: 'bottom 65%', scrub: true, invalidateOnRefresh: true, refreshPriority: 3 },
+      scrollTrigger: { trigger: flightWrap, start: 'top 65%', end: 'bottom 65%', scrub: SCRUB, invalidateOnRefresh: true, refreshPriority: 3 },
       onUpdate: function () {
         flown.style.strokeDashoffset = String(flownLen * (1 - prog.p));
         var pt = flown.getPointAtLength(flownLen * prog.p);
@@ -562,7 +590,13 @@
 
   /* ---------- resize safety: rebuild the rail, then refresh everything ---------- */
   var rto;
+  var lastW = window.innerWidth;
   window.addEventListener('resize', function () {
+    /* on touch the URL bar changes HEIGHT constantly while scrolling; a rebuild
+       mid-fling resizes the document and iOS cancels the momentum. Only a WIDTH
+       change (rotation, split view) is a real resize on touch. */
+    if (isTouch && window.innerWidth === lastW) return;
+    lastW = window.innerWidth;
     clearTimeout(rto);
     rto = setTimeout(function () {
       buildRailGrow();
